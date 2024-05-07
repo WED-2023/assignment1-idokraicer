@@ -29,6 +29,7 @@ body {
   font-size: 1.5em;
   position: fixed;
   top: 0;
+  transition: background 0.6s ease-out;
 }
 
 #menu:hover,
@@ -65,12 +66,12 @@ a:after {
   height: 0.1em;
   left: 0;
   bottom: -0.1em;
-  transition: width 0.3s ease-out;
+  transition: width 0.5s ease-out;
 }
 
 a:hover:after {
   width: 100%;
-  transition: width 0.3s ease-out;
+  transition: width 0.5s ease-out;
 }
 
 p {
@@ -140,6 +141,15 @@ section {
   object-fit: cover;
   max-height: 30vh;
   max-width: 30vw;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+.image-item img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  animation: pulseBigger 3s infinite;
+  animation-delay: 0.4s;
 }
 
 @media only screen and (min-width: 768px) {
@@ -159,6 +169,11 @@ section {
 .about .image > img {
   width: 100%;
   border-radius: 0.5em;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+}
+.about .image > img:hover {
+  animation: pulse 3s infinite;
 }
 
 .about .text {
@@ -174,7 +189,7 @@ section > * {
 iframe {
   width: 100%;
   max-width: 60vw;
-  height: 50vh;
+  height: 40vh;
   border: none;
 }
 
@@ -182,4 +197,97 @@ iframe {
   display: flex;
   justify-content: center;
   margin-top: 2em;
+}
+.qr {
+  height: 200px;
+  aspect-ratio: 1/1;
+}
+
+.answers {
+  padding-top: 3em;
+  display: block;
+  max-width: 80vw;
+  margin: auto;
+}
+
+.answers > ol > li {
+  font-size: 1.2em;
+}
+.contact-wrapper {
+  padding-top: 2em;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  max-width: 50vw;
+  margin: auto;
+  gap: 2em;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.contact-info {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+input[type="submit"] {
+  background-color: var(--menu-color);
+  border-radius: 0.3em;
+  color: black;
+  border: none;
+  padding: 0.5em;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--menu-color-hover);
+  color: white;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  border-radius: 0.3em;
+  border: 1px solid var(--menu-color);
+  padding: 0.5em;
+  font-size: 1.2em;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes pulseBigger {
+  10% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  60% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
