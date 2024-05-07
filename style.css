@@ -178,7 +178,7 @@ iframe {
   border: none;
 }
 
-.fb-like {
+.fb-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 2em;
